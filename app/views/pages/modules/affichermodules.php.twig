@@ -1,0 +1,52 @@
+
+{% extends "layout.twig" %}
+
+{% block content %}
+
+{% if flash.success %}
+     <div class="alert alert-success">
+        {{flash.success}}
+     </div>
+{% endif %}
+
+{% if flash.error %}
+     <div class="alert alert-danger">
+        {{flash.error}}
+     </div>
+{% endif %}
+
+
+<table id="example" class="table " style="width:100%">
+<thead>
+<tr>
+    <th>id</th>
+    <th>libele</th>
+    <th>semestre</th>
+    <th>Niveau</th>  
+  </tr> 
+</thead>  
+ <tbody>
+ 
+{% for module in modules %}
+<tr>
+    <td>{{module.id}}</td> 
+    <td>
+       <form action="getmodules_students" method="post">
+            <input type="hidden" name="module_id" value="{{module.id}}">
+            <button style=" border:none;background-color:transparent;margin-left:12px;">{{module.libele}}</button>
+       </form> 
+     
+
+    </td> 
+    <td>{{module.semestre}}</td>
+    <td style="color:blue;font-weight:bold;">{{module.niveau}}</td>    
+</tr>
+  {% endfor %}
+ </tbody>        
+</table>
+
+
+
+ 
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+{% if flash.success %}
+     <div class="alert alert-success">
+        {{flash.success}}
+     </div>
+{% endif %}
+{% if flash.error %}
+     <div class="alert alert-danger">
+        {{flash.error}}
+     </div>
+{% endif %}
+
+
+<table id="example" class="table " style="width:100%">
+<thead>
+<tr> 
+    <th>Module</th>
+    <th>note1</th>
+    <th>note2</th> 
+    <th>total</th>
+    <th>status</th>  
+
+  </tr> 
+</thead>  
+ <tbody> 
+<h3 style="color:green;text-decoration: underline;">Notes des modules </h3>
+{% for note  in notes %}
+ <form action="setstudent_notes" method="post">
+<tr>
+    <td>{{note.module_libele}}</td>  
+     
+     <td>
+        {% if note.note1 !=-1 %}
+          <b>{{note.note1}}</b>
+        {% else %}
+          <b style="color:blue">pas encore</b> 
+        {% endif %} 
+     </td>
+     <td>
+        {% if note.note2 !=-1 %}
+          <b>{{note.note2}}</b>
+        {% else %}
+          <b style="color:blue">pas encore</b> 
+        {% endif %} 
+     </td> 
+    <td>
+         {% if note.total >=12  %}
+           <b style="color:green">Validé</b>
+        {% else %}
+           {% if note.total !=-1  %}
+              <b style="color:red">Non Validé</b>
+           {% else %}
+           <b style="color:blue">pas encore</b>
+           {% endif %}  
+        {% endif %}
+    </td> 
+       
+</tr>
+</form>  
+  {% endfor %}
+ </tbody>        
+</table>
+
+{% endblock %}

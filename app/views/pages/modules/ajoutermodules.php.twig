@@ -1,0 +1,50 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+{% if flash.success %}
+     <div class="alert alert-success">
+        {{flash.success}}
+     </div>
+{% endif %}
+{% if flash.error %}
+     <div class="alert alert-danger">
+        {{flash.error}}
+     </div>
+{% endif %}
+ 
+
+ <form action="ajoutermodulespost" method="post">
+<div class="form-group">
+ <label for="libele">nom de Module:</label>
+	<input type="text" name="libele" class="form-control" required/>
+</div> 
+<div class="form-group">
+    <label for="semestre">choisissez la semestre:</label>
+           <select class="form-control" name="semestre" required/> 
+
+                     <option value='S1'>S1</option>  
+                     <option value='S2'>S2</option>    
+               </select>
+</div>
+
+<div class="form-group">
+    <label for="niveau">choisissez le Niveau:</label>
+           <select class="form-control" name="niveau" required/> 
+
+                     <option value='CP1'>CP1</option>  
+                     <option value='CP2'>CP2</option>  
+                     <option value='GC1'>GC1</option>
+                     <option value='GC2'>GC2</option>  
+                     <option value='GC3'>GC3</option>  
+                     <option value='GI1'>GI1</option>
+                     <option value='GI2'>GI2</option>  
+                     <option value='GI3'>GI3</option>  
+                     <option value='GEER1'>GEER1</option>
+                     <option value='GEER2'>GEER2</option>  
+                     <option value='GEER3'>GEER3</option>  
+               </select>
+</div>
+ <button type="submit" classe="btn btn-warning">Ajouter</button>
+</form>
+{% endblock %}

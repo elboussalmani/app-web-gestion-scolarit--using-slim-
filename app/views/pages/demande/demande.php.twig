@@ -1,0 +1,29 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+{% if flash.success %}
+     <div class="alert alert-success">
+        {{flash.success}}
+     </div>
+{% endif %}
+{% if flash.error %}
+     <div class="alert alert-danger">
+        {{flash.error}}
+     </div>
+{% endif %}
+
+
+ demander
+
+  <li> 
+              <form action="demande" method="post">
+                <input type="hidden" name="student_id" value="1"><!--  bdelha mn cp1 ldyal l user -->
+                <input type="hidden" name="demande" value="releve">
+                <button style=" border:none;background-color:transparent;margin-left:12px;color:grey">CP1</button>
+              </form> 
+            </li>
+
+            
+
+{% endblock %}
